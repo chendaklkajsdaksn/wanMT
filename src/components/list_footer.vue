@@ -5,9 +5,10 @@
         <div class="iconfont iconicon-test35"></div>
         <div>客服</div>
       </div>
-      <div>
+      <div style="position:relative">
         <div class="iconfont iconicon-test9"></div>
-        <div>购物车</div>
+        <div class="hongdian" v-if="this.$store.state.hasOrder"></div>
+        <div @click="goToCar">购物车</div>
       </div>
       <div @click="join">
         <div class="iconfont iconicon-test53" v-if="shoucang==0"></div>
@@ -15,7 +16,7 @@
         <div>收藏</div>
       </div>
       <div>
-        <button class="car">加入购物车</button>
+        <button class="car" @click="insertCar">加入购物车</button>
       </div>
       <div>
         <button class="buy">立即购买</button>
@@ -25,9 +26,11 @@
 </template>
 <script>
 export default {
+  props:["parentData"],
   data() {
     return {
-      shoucang:0
+      shoucang:0,
+      CarNum:0
     };
   },
   methods:{
@@ -39,11 +42,42 @@ export default {
         this.shoucang=0;
         this.$toast("已取消收藏");
       }
+    },
+    insertCar(){
+      if(!this.CarNum){
+        this.CarNum++;
+        this.$store.commit("addNum",1); 
+        this.$toast({
+          message:'已添加入购物车',
+          duration:2000,
+          iconClass:'iconfont iconicon-test82'
+        });
+        this.$store.commit("addCar",this.parentData)
+         console.log(this.$store.state.car)
+      
+      }
+    },
+    goToCar(){
+      this.$router.push('/car')
     }
+  },
+  mounted(){
+    this.$store.state.car.forEach(element => {
+      if(element.title==this.parentData.title){
+        this.CarNum=1
+      }
+    });
   }
 };
 </script>
 <style scoped>
+.hongdian{
+  background: #f00;
+  width: 5px;height: 5px !important;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;right: 0;
+}
 .list_footer{
   height: 8vh;width: 100vw;
   border-top: 1px solid #ddd;

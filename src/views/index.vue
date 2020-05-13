@@ -38,8 +38,8 @@
             <div v-for="(e,i) of xilie" :key="i" v-if="i>=4">
               <router-link :to="`/xilie?order=${i}`">
                 <img :src="e.image" class="w-50" />
-                <div>{{e.title}}</div>
               </router-link>
+              <div>{{e.title}}</div>
             </div>
           </div>
         </mt-swipe-item>

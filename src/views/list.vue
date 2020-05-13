@@ -63,6 +63,7 @@
       <div class="xiangqing">
         <img :src="e" v-for="(e,i) of list.xiangqing" :key="i" class="w-100" />
       </div>
+      <listFooter :parentData="list"></listFooter>
     </div>
     <div v-else>
       <img :src="route.image" class="w-100" />
@@ -117,8 +118,8 @@
       <div class="xiangqing">
         <img :src="e" v-for="(e,i) of list.xiangqing" :key="i" class="w-100" />
       </div>
+      <listFooter :parentData="route"></listFooter>
     </div>
-    <listFooter></listFooter>
   </div>
 </template>
 
