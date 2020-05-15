@@ -5,6 +5,9 @@ import Header from "../components/myHeader.vue";
 import Login from "../views/login";
 import Register from "../views/register";
 import store from "../store";
+import Ceshi from "../views/ceshi";
+import Address from "../views/address";
+import newAddress from "../views/newAddress";
 
 Vue.use(VueRouter);
 
@@ -23,6 +26,21 @@ const routes = [
     path: "/login",
     name: "Login",
     component: Login,
+  },
+  {
+    path: "/address",
+    name: "Address",
+    component: Address,
+  },
+  {
+    path: "/newaddress",
+    name: "newAddress",
+    component: newAddress,
+  },
+  {
+    path: "/ceshi",
+    name: "ceshi",
+    component: Ceshi,
   },
   // {
   //   path: '/about',

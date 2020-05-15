@@ -12,7 +12,7 @@
       <div class="password">
         <input type="password" placeholder="请输入密码" v-model="upwd" />
         <label>
-          <input type="checkbox" />
+          <input type="checkbox" v-model="jizhumima" />
           <span>记住密码</span>
         </label>
       </div>
@@ -111,7 +111,8 @@ export default {
   data() {
     return {
       uname: "",
-      upwd: ""
+      upwd: "",
+      jizhumima: false
     };
   },
   methods: {
@@ -126,6 +127,7 @@ export default {
           .then(res => {
             //获取服务器的响应代码
             var code = res.data.code;
+            console.log(code);
             if (code == 0) {
               //登录失败
               this.$messagebox.alert("用户名或密码错误", "登录失败");
@@ -145,6 +147,15 @@ export default {
           .catch(res => {
             console.log(res);
           });
+        if (this.jizhumima) {
+          localStorage.setItem("uname", this.uname);
+          localStorage.setItem("upwd", this.upwd);
+          localStorage.setItem("isLogined", true);
+        } else {
+          localStorage.removeItem("uname");
+          localStorage.removeItem("upwd");
+          localStorage.removeItem("isLogined");
+        }
       } else {
         this.$toast("用户名或密码为空");
       }

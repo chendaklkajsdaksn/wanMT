@@ -121,8 +121,6 @@ export default {
     //点击按钮,改变当前对应的购物数量
     add(i) {
       this.car[i].num++;
-      this.car.reverse();
-      this.car.reverse();
       console.log(this.car);
       sessionStorage.setItem("car", JSON.stringify(this.car));
       this.priceTotal();
@@ -162,8 +160,6 @@ export default {
     },
     minu(i) {
       if (this.car[i].num > 1) this.car[i].num--;
-      this.car.reverse();
-      this.car.reverse();
       sessionStorage.setItem("car", JSON.stringify(this.car));
       this.priceTotal();
       this.number();
@@ -172,14 +168,10 @@ export default {
       if (e.target.value > 0) {
         let num = Math.ceil(e.target.value);
         this.car[i].num = num;
-        this.car.reverse();
-        this.car.reverse();
         sessionStorage.setItem("car", JSON.stringify(this.car));
         this.priceTotal();
       } else {
         this.car[i].num = 1;
-        this.car.reverse();
-        this.car.reverse();
         sessionStorage.setItem("car", JSON.stringify(this.car));
         this.priceTotal();
       }

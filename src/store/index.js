@@ -6,11 +6,16 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    uname: sessionStorage.getItem("uname")
+    uname: localStorage.getItem("uname")
+      ? localStorage.getItem("uname")
+      : sessionStorage.getItem("uname")
       ? sessionStorage.getItem("uname")
       : "",
+    upwd: localStorage.getItem("upwd") ? localStorage.getItem("upwd") : "",
     uid: sessionStorage.getItem("uid") ? sessionStorage.getItem("uid") : 0,
-    isLogined: sessionStorage.getItem("isLogined")
+    isLogined: localStorage.getItem("isLogined")
+      ? localStorage.getItem("isLogined")
+      : sessionStorage.getItem("isLogined")
       ? sessionStorage.getItem("isLogined")
       : false,
     orderNum: 0,

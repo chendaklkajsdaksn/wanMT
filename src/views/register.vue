@@ -165,7 +165,8 @@ export default {
           this.axios
             .post("/register", "uname=" + this.uname + "&upwd=" + this.upwd)
             .then(res => {
-              if ((res.data.code = 0)) {
+              console.log(res.data.code);
+              if (res.data.code == 0) {
                 this.$toast("用户名已存在,请更换用户名重新注册");
               } else {
                 this.$toast("注册成功");
