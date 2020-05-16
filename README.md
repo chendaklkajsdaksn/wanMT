@@ -1,4 +1,4 @@
-# wanmingtang
+# wanMT
 
 ## Project setup
 ```

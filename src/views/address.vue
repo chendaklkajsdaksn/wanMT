@@ -29,16 +29,14 @@
         </div>
       </div>
       <div class="btn">
-        <mt-button type="danger" size="large" @click="newAddr"
-          >新增地址</mt-button
-        >
+        <mt-button type="danger" size="large" @click="newAddr">新增地址</mt-button>
       </div>
     </div>
     <Footer :active="active"></Footer>
   </div>
 </template>
 <script>
-import Footer from "../components/footer"
+import Footer from "../components/footer";
 export default {
   components: {
     Footer
@@ -49,35 +47,35 @@ export default {
       uid: sessionStorage.getItem("uid"),
       active: "我的",
       index: 1
-    }
+    };
   },
   methods: {
     back() {
-      this.$router.back()
+      this.$router.back();
     },
     moren(i, e) {
-      this.index = i + 1
+      this.index = i + 1;
     },
     del(i) {
-      var that = this
+      var that = this;
       this.jsp("delete", { index: i, uid: this.uid })
-        .then((res) => {
-          that.address.splice(i, 1)
+        .then(res => {
+          that.address.splice(i, 1);
         })
-        .catch()
+        .catch();
     },
     newAddr() {
-      this.$router.push("/newaddress")
+      this.$router.push("/newaddress");
     }
   },
   mounted() {
     this.jsp("address", { uid: this.uid })
-      .then((res) => {
-        this.address = res.address
+      .then(res => {
+        this.address = res.address;
       })
-      .catch((res) => console.log(res))
+      .catch(res => console.log(res));
   }
-}
+};
 </script>
 <style scoped>
 .manage {
