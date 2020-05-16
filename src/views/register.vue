@@ -63,7 +63,11 @@
 }
 .reg {
   box-sizing: border-box;
+<<<<<<< HEAD
   height: 350px;
+=======
+  height: 48vh;
+>>>>>>> a51d0be691c203cdeb3aea5bb992c9c365710e46
   width: 84vw;
   margin: 8vw;
   margin-top: 100px;
@@ -76,6 +80,10 @@
 .reg input {
   box-sizing: border-box;
   width: 100%;
+<<<<<<< HEAD
+=======
+  height: 100%;
+>>>>>>> a51d0be691c203cdeb3aea5bb992c9c365710e46
   border: 0;
   border-bottom: 1px solid #ccc;
   font-size: 0.8em;
@@ -84,7 +92,11 @@
   margin-top: 10px;
   box-sizing: border-box;
   width: 100%;
+<<<<<<< HEAD
   height: 45px;
+=======
+  height: 100%;
+>>>>>>> a51d0be691c203cdeb3aea5bb992c9c365710e46
   background: #f44;
   border: 0;
   border-radius: 5px;
@@ -102,6 +114,10 @@
 }
 .reg .password {
   position: relative;
+<<<<<<< HEAD
+=======
+  height: 100%;
+>>>>>>> a51d0be691c203cdeb3aea5bb992c9c365710e46
   width: 100%;
 }
 

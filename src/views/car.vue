@@ -74,7 +74,11 @@
         <span class="total">&yen; {{price}}元</span>
       </div>
       <div>
+<<<<<<< HEAD
         <button @click="goToSettle">去结算</button>
+=======
+        <button>去结算</button>
+>>>>>>> a51d0be691c203cdeb3aea5bb992c9c365710e46
       </div>
     </div>
     <Footer :active="active"></Footer>
@@ -142,6 +146,7 @@ export default {
         this.priceTotal();
       }
     },
+<<<<<<< HEAD
     goToSettle() {
       if (this.car.length > 0) {
         this.$router.push("/settle");
@@ -152,6 +157,8 @@ export default {
         });
       }
     },
+=======
+>>>>>>> a51d0be691c203cdeb3aea5bb992c9c365710e46
     priceTotal() {
       this.price = 0;
       this.car.forEach((e, i) => {
@@ -212,12 +219,15 @@ export default {
   watch: {}
 };
 </script>
+<<<<<<< HEAD
 <style>
 .line12 {
   line-height: 1.5rem !important;
   letter-spacing: 1px !important;
 }
 </style>
+=======
+>>>>>>> a51d0be691c203cdeb3aea5bb992c9c365710e46
 <style scoped>
 * {
   box-sizing: border-box;
@@ -225,7 +235,10 @@ export default {
 .all {
   text-align: left;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> a51d0be691c203cdeb3aea5bb992c9c365710e46
 .dianpu {
   padding-top: 10px;
 }
