@@ -159,11 +159,7 @@ export default {
 }
 .like {
   width: 100%;
-<<<<<<< HEAD
   height: 200vw;
-=======
-  height: 110vh;
->>>>>>> a51d0be691c203cdeb3aea5bb992c9c365710e46
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: repeat(3, 1fr);
@@ -171,16 +167,10 @@ export default {
   justify-content: center;
   align-content: center;
   align-items: center;
-<<<<<<< HEAD
   margin-bottom: 10vw;
 }
 .zhuda {
   height: 48vw;
-=======
-}
-.zhuda {
-  height: 26vh;
->>>>>>> a51d0be691c203cdeb3aea5bb992c9c365710e46
   background-color: aqua;
   display: grid;
   grid-template-columns: repeat(3, 29%);

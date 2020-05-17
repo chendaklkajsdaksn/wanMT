@@ -74,11 +74,7 @@
         <span class="total">&yen; {{price}}元</span>
       </div>
       <div>
-<<<<<<< HEAD
         <button @click="goToSettle">去结算</button>
-=======
-        <button>去结算</button>
->>>>>>> a51d0be691c203cdeb3aea5bb992c9c365710e46
       </div>
     </div>
     <Footer :active="active"></Footer>
@@ -116,6 +112,7 @@ export default {
       if (!e.num) {
         e.num = 1;
         e.state = true;
+        sessionStorage.setItem("car", JSON.stringify(this.car));
       }
       this.number();
     });
@@ -138,18 +135,24 @@ export default {
         this.car.forEach((e, i) => {
           e.state = false;
         });
+        sessionStorage.setItem("car", JSON.stringify(this.car));
       } else {
         this.number();
         this.car.forEach((e, i) => {
           e.state = true;
         });
         this.priceTotal();
+        sessionStorage.setItem("car", JSON.stringify(this.car));
       }
     },
-<<<<<<< HEAD
+    //结算跳转
     goToSettle() {
       if (this.car.length > 0) {
-        this.$router.push("/settle");
+        if (this.price > 0) {
+          this.$router.push("/settle");
+        } else {
+          this.$toast("你还没有选中商品哦");
+        }
       } else {
         this.$toast({
           message: "你还没有挑选商品哦，快去挑选吧",
@@ -157,8 +160,6 @@ export default {
         });
       }
     },
-=======
->>>>>>> a51d0be691c203cdeb3aea5bb992c9c365710e46
     priceTotal() {
       this.price = 0;
       this.car.forEach((e, i) => {
@@ -204,6 +205,7 @@ export default {
     quxiao(i) {
       if (this.car[i].state) {
         this.car[i].state = false;
+        sessionStorage.setItem("car", JSON.stringify(this.car));
         this.$set(this.car, i, this.car[i]);
         this.number();
         this.car_num -= this.car[i].num;
@@ -212,6 +214,7 @@ export default {
         this.$set(this.car, i, this.car[i]);
         this.number();
         this.car_num += this.car[i].num;
+        sessionStorage.setItem("car", JSON.stringify(this.car));
       }
       this.priceTotal();
     }
@@ -219,15 +222,12 @@ export default {
   watch: {}
 };
 </script>
-<<<<<<< HEAD
 <style>
 .line12 {
   line-height: 1.5rem !important;
   letter-spacing: 1px !important;
 }
 </style>
-=======
->>>>>>> a51d0be691c203cdeb3aea5bb992c9c365710e46
 <style scoped>
 * {
   box-sizing: border-box;
@@ -235,10 +235,6 @@ export default {
 .all {
   text-align: left;
 }
-<<<<<<< HEAD
-
-=======
->>>>>>> a51d0be691c203cdeb3aea5bb992c9c365710e46
 .dianpu {
   padding-top: 10px;
 }

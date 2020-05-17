@@ -199,23 +199,13 @@ export default {
   watch: {
     xilie() {
       setTimeout(() => {
-<<<<<<< HEAD
         rightHeight.style.height = 100 + "%";
-=======
-        rightHeight.style.height =
-          Math.ceil(rightHeight.children.length / 2) * 27 + 1 + "vh";
->>>>>>> a51d0be691c203cdeb3aea5bb992c9c365710e46
       }, 100);
     },
     selected() {
       this.$router.push(`/xilie?order=${this.selected - 1}`);
       setTimeout(() => {
-<<<<<<< HEAD
         rightHeight.style.height = 100 + "%";
-=======
-        rightHeight.style.height =
-          Math.ceil(rightHeight.children.length / 2) * 27 + 1 + "vh";
->>>>>>> a51d0be691c203cdeb3aea5bb992c9c365710e46
       }, 100);
     }
   }
@@ -231,19 +221,11 @@ export default {
   position: relative;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-<<<<<<< HEAD
   grid-template-rows: repeat(auto-fill, 45vw);
-=======
-  grid-template-rows: repeat(auto-fill, 25vh);
->>>>>>> a51d0be691c203cdeb3aea5bb992c9c365710e46
   gap: 2vh;
   padding: 10px;
   margin-bottom: 55px;
   box-sizing: border-box;
-<<<<<<< HEAD
-=======
-  overflow: hidden;
->>>>>>> a51d0be691c203cdeb3aea5bb992c9c365710e46
 }
 .rightSection > div {
   overflow: hidden;

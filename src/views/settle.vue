@@ -68,6 +68,13 @@ export default {
   mounted() {
     if (sessionStorage.getItem("car")) {
       this.car = JSON.parse(sessionStorage.getItem("car"));
+      //去除掉没有选中的的其他商品
+      this.car.forEach((e, i) => {
+        if (!e.state) {
+          this.car.splice(i, 1);
+        }
+      });
+      console.log(this.car);
       //把购物车所有商品的数量乘上单价得到商品需要支付的总价
       this.car.forEach((e, i) => {
         this.total_price += e.price * e.num;
