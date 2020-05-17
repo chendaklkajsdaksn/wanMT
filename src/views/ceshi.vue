@@ -26,8 +26,11 @@
       <option v-for="(e,i) in all[`0,${province[0]},${city[0]}`]" :value="e">{{e}}</option>
     </select>
     <button @click="pro">显示省份</button>
+<<<<<<< HEAD
     <!-- 测试promiss函数 -->
     <button @click="promiss">开始执行</button>
+=======
+>>>>>>> a51d0be691c203cdeb3aea5bb992c9c365710e46
   </div>
 </template>
 <script>
@@ -4583,6 +4586,7 @@ export default {
     pro() {
       console.log(this.province, this.city, this.area);
     },
+<<<<<<< HEAD
     promiss() {
       let a1 = () =>
         new Promise(function(open) {
@@ -4602,6 +4606,8 @@ export default {
         });
       a2().then(a1);
     },
+=======
+>>>>>>> a51d0be691c203cdeb3aea5bb992c9c365710e46
     change() {
       //单独修改数组里的对象元素可以渲染到页面上
       //   this.ex[0].age = 200;

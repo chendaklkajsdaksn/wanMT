@@ -30,13 +30,21 @@
 <style scoped>
 .title {
   width: 100%;
+<<<<<<< HEAD
   height: 60vw;
+=======
+  height: 45vh;
+>>>>>>> a51d0be691c203cdeb3aea5bb992c9c365710e46
   line-height: 45vh;
   text-align: center;
 }
 .login {
   box-sizing: border-box;
+<<<<<<< HEAD
   height: 84vw;
+=======
+  height: 38vh;
+>>>>>>> a51d0be691c203cdeb3aea5bb992c9c365710e46
   width: 84vw;
   margin: 8vw;
   display: flex;
@@ -48,6 +56,10 @@
 .login input {
   box-sizing: border-box;
   width: 100%;
+<<<<<<< HEAD
+=======
+  height: 100%;
+>>>>>>> a51d0be691c203cdeb3aea5bb992c9c365710e46
   border: 0;
   border-bottom: 1px solid #ccc;
   font-size: 0.8em;
@@ -56,7 +68,11 @@
   margin-top: 10px;
   box-sizing: border-box;
   width: 100%;
+<<<<<<< HEAD
   height: 45px;
+=======
+  height: 100%;
+>>>>>>> a51d0be691c203cdeb3aea5bb992c9c365710e46
   background: #f44;
   border: 0;
   border-radius: 5px;
@@ -83,7 +99,11 @@
   font-size: 0.8rem;
   position: absolute;
   right: 0px;
+<<<<<<< HEAD
   top: 22%;
+=======
+  top: 50%;
+>>>>>>> a51d0be691c203cdeb3aea5bb992c9c365710e46
   margin-top: -2vw;
   line-height: 100%;
   display: flex;
