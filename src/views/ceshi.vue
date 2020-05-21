@@ -27,6 +27,7 @@
     </select>
     <button @click="pro">显示省份</button>
     <button @click="promiss">开始执行</button>
+    <button @click="get">请求数据</button>
   </div>
 </template>
 <script>
@@ -41,6 +42,7 @@ export default {
       city: "",
       area: "",
       a: { name: "top", age: 12 },
+      b: { id: 4 },
       all: {
         "0": {
           "110000": "北京",
@@ -4582,6 +4584,29 @@ export default {
     pro() {
       console.log(this.province, this.city, this.area);
     },
+    get() {
+      var data = this.qs.stringify({ uname: "chen", upwd: "chen520" });
+      this.axios
+        .post("/login", data)
+        .then(res => {
+          console.log(res);
+        })
+        .catch(res => {
+          console.log(res);
+        });
+    },
+    a1(open) {
+      setTimeout(() => {
+        console.log("a先跑");
+        open();
+      }, 2000);
+    },
+    b1(open) {
+      setTimeout(() => {
+        console.log("b在2s后再跑");
+        open();
+      }, 2000);
+    },
     promiss() {
       let a1 = () =>
         new Promise(function(open) {
@@ -4622,6 +4647,14 @@ export default {
       console.log(e);
     }
   },
-  watch: {}
+  watch: {},
+  mounted() {
+    this.$promise(this.a1, this.b1).then(() => {
+      console.log("c跑");
+      setTimeout(() => {
+        console.log("d再跑");
+      }, 2000);
+    });
+  }
 };
 </script>

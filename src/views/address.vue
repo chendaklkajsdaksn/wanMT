@@ -51,7 +51,10 @@ export default {
   },
   methods: {
     back() {
-      this.$router.back();
+      this.jsp("updatelocation", { uid: this.uid, index: this.index - 1 })
+        .then(res => {})
+        .catch(res => {});
+      this.$router.go(-1);
     },
     moren(i, e) {
       this.index = i + 1;
@@ -73,7 +76,7 @@ export default {
       .then(res => {
         this.address = res.address;
       })
-      .catch(res => console.log(res));
+      .catch();
   }
 };
 </script>

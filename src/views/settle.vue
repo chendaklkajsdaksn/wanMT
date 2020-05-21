@@ -11,7 +11,7 @@
         <span>{{username}}</span>
         <span>{{phone}}</span>
       </div>
-      <div>{{text}}</div>
+      <div v-html="text"></div>
     </div>
     <div>
       <div v-for="(element,index) in car" class="goods">
@@ -40,7 +40,7 @@
         <span>商品合计</span>
         <span>&yen;{{total_price.toFixed(2)}}元</span>
       </div>
-      <mt-button type="danger">确认订单</mt-button>
+      <mt-button type="danger" @click="pay">确认订单</mt-button>
     </div>
   </div>
 </template>
@@ -53,7 +53,10 @@ export default {
       username: "",
       phone: 0,
       text: "",
-      total_price: 0
+      total_price: 0,
+      orderNumber: sessionStorage.getItem("orderNum")
+        ? sessionStorage.getItem("orderNum")
+        : 0
     };
   },
   methods: {
@@ -62,6 +65,22 @@ export default {
     },
     add() {
       this.$router.push("/address");
+    },
+    pay() {
+      this.$router.push({
+        name: "Pay",
+        params: { price: this.total_price }
+      });
+      if (!this.orderNumber) {
+        let date = new Date();
+        this.orderNumber =
+          "" +
+          date.getFullYear() +
+          (date.getMonth() + 1) +
+          date.getDate() +
+          Math.ceil(Math.random() * 100000);
+        sessionStorage.setItem("orderNum", this.orderNumber);
+      }
     }
   },
   watch: {},
@@ -74,13 +93,12 @@ export default {
           this.car.splice(i, 1);
         }
       });
-      console.log(this.car);
       //把购物车所有商品的数量乘上单价得到商品需要支付的总价
       this.car.forEach((e, i) => {
         this.total_price += e.price * e.num;
       });
     }
-    this.jsp("user")
+    this.jsp("user", { uid: sessionStorage.getItem("uid") })
       .then(res => {
         //用promiss方法保证先得到数据，在从data的变量中个其他变量赋值
         // var promise1 = () =>
@@ -97,16 +115,34 @@ export default {
         //     open();
         //   });
         // promise1().then(promise2);
-        let f1 = () => {
-          this.address = JSON.parse(res.results.location);
+        let f1 = open => {
+          // 使用直接赋值可能造成页面不刷新
+          // this.address = JSON.parse(res.results.location);
+          // 改用vue的set方法,实时更新,但是仍然不会实时更新,说明问题出现在后续的赋值当中
+          JSON.parse(res.results.location).forEach((e, i) => {
+            this.$set(this.address, i, e);
+          });
+          open();
         };
-        let f2 = () => {
-          this.phone = this.address[0].phone;
-          this.username = this.address[0].username;
-          this.text = this.address[0].text;
+        let f2 = open => {
+          // 使用promise和settimeout仍然无法保证每次返回都刷新值,使用nextTick()基本上保证了每次刷新
+          this.$nextTick(() => {
+            this.phone = this.address[0].phone;
+            this.username = this.address[0].username;
+            this.text =
+              this.address[0].province.split(",")[1] +
+              "&nbsp;" +
+              this.address[0].city.split(",")[1] +
+              "&nbsp;" +
+              this.address[0].area +
+              "&nbsp;" +
+              this.address[0].text;
+          });
+
+          open();
         };
         //使用包装的promiss函数实现函数执行的先后顺序
-        this.promiss(f1, f2);
+        this.$promise(f1, f2);
       })
       .catch();
   }
@@ -163,6 +199,7 @@ export default {
   font-size: 0.9rem;
   letter-spacing: 0.5px;
   line-height: 1.2;
+  overflow: hidden;
 }
 .goods > div:first-child {
   grid-area: 1/1/3/1;
